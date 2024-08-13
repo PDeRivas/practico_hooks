@@ -1,9 +1,13 @@
 import { useState } from 'react'
+import AgregarReceta from './components/AgregarReceta'
 import './App.css'
 
 function App() {
   return (
-    <h1>Mis recetas...</h1>
+    <>
+      <AgregarReceta />
+      <h1>Mis recetas...</h1>
+    </>
   )
 }
 
