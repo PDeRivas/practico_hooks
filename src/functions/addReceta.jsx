@@ -1,4 +1,5 @@
 export default function addReceta(nombre, descripcion){
+    //localStorage.clear()
     let recetasString = localStorage.getItem('recetas')
     if (!recetasString){
         recetasString = []

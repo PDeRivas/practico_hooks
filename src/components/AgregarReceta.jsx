@@ -22,7 +22,7 @@ export default function AgregarReceta() {
 
     return (
     <>
-        <form onSubmit={''}>
+        <form>
             <label>Nombre</label>
             <input type='text' onChange={handleNombre} value={nombre} />
             <label>Descripcion</label>

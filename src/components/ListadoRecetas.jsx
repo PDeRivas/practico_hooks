@@ -1,34 +1,21 @@
-import { useState } from 'react'
-import addReceta from '../functions/addReceta'
+import { useContext, useEffect, useState } from 'react'
+import { ContextoRecetas } from '../App'
 
 export default function ListadoRecetas() {
-    let [nombre, setNombre] = useState('')
-    let [descripcion, setDescripcion] = useState('')
-
-    let handleNombre = (event)=>{
-        let valor = event.target.value
-        setNombre(valor)
-    }
-
-    let descripcionInput = (event)=>{
-        let valor = event.target.value
-        setDescripcion(valor)
-    }
-
-    let handleSubmit = (event) =>{
-        event.preventDefault()
-        addReceta(nombre, descripcion)
-    }
-
+    let {recetas, setRecetas} = useContext(ContextoRecetas)
+    setRecetas(()=>JSON.parse(useContext(ContextoRecetas)))
+    useEffect(()=>{
+        setRecetas(() => JSON.parse(useContext(ContextoRecetas)))
+    },[])
+    
     return (
     <>
-        <form onSubmit={''}>
-            <label>Nombre</label>
-            <input type='text' onChange={handleNombre} value={nombre} />
-            <label>Descripcion</label>
-            <textarea onChange={descripcionInput} value={descripcion}/>
-            <button onClick={handleSubmit}>Agregar Receta</button>
-        </form>
+        {recetas.map((receta) =>{
+            return(<div>
+                <h3>{receta.nombre}</h3>
+                <p>{receta.descripcion}</p>
+            </div>)
+        })}
     </>
     )
 }
