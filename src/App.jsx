@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import AgregarReceta from './components/AgregarReceta'
 import './App.css'
 import ListadoRecetas from './components/ListadoRecetas'
+import getRecetas from './functions/getRecetas';
 
 export const ContextoRecetas = React.createContext({
   recetas: JSON.parse(localStorage.getItem('recetas')),
@@ -9,19 +10,18 @@ export const ContextoRecetas = React.createContext({
 });
 
 function App() {
-  let [recetas, setRecetas] = useState(localStorage.getItem('recetas'))
-  if (recetas == null){
-    setRecetas([])
-  }
+  let [recetas, setRecetas] = useState(getRecetas())
+  
   const valor = {recetas, setRecetas}
   return (
-    <>
+    <div className='h-screen'>
       <ContextoRecetas.Provider value={valor}>
-        <AgregarReceta />
-        <h1>Mis recetas...</h1>
-        <ListadoRecetas />
+        <div className="grid grid-cols-5">
+          <AgregarReceta />
+          <ListadoRecetas />
+        </div>
       </ContextoRecetas.Provider>
-    </>
+    </div>
   )
 }
 
