@@ -10,7 +10,6 @@ export default function addReceta(nombre, descripcion){
         recetasJson = JSON.parse(recetasString)
         lastId = recetasJson[recetasJson.length-1].id + 1
     }
-    console.log(lastId)
     recetasJson.push({
         id: lastId,
         nombre: nombre,
