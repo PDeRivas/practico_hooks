@@ -7,8 +7,8 @@ export default function ListadoRecetas() {
     return (
     <div className='flex flex-col items-center col-span-4'>
         <h1>Mis recetas...</h1>
-        {JSON.parse(recetas).map((receta) =>{
-            return(<TarjetaReceta nombre={receta.nombre} descripcion={receta.descripcion}/>)
+        {recetas.map((receta) =>{
+            return(<TarjetaReceta nombre={receta.nombre} descripcion={receta.descripcion} id={receta.id}/>)
         })}
     </div>
     )

@@ -4,5 +4,8 @@ export default function getRecetas(){
     if (recetas == null){
         recetas = []
     }
+    else{
+        recetas = JSON.parse(recetas)
+    }
     return recetas
 }
