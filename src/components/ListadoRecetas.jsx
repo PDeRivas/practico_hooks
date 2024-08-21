@@ -1,5 +1,5 @@
 import { useContext, useEffect, useState } from 'react'
-import { ContextoRecetas } from '../App'
+import { ContextoRecetas } from '../pages/Home'
 import TarjetaReceta from './TarjetaReceta'
 
 export default function ListadoRecetas() {
