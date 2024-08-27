@@ -1,7 +1,27 @@
-import { ContextoUsuario } from "../context/contextoUsuario"
+import React, { useContext, useEffect, useState } from "react"
+import { UserContext } from "../context/contextoUsuario"
+import logout from "../functions/logout"
+import { useLocation, useNavigate } from "react-router-dom"
 
 function NavBar(){
-    
+    let navigate = useNavigate()
+    const {usuario, setUsuario} = useContext(UserContext)
+    const location = useLocation()
+    const [logeo, setLogeo] = useState(<div></div>)
+    useEffect(()=>{
+        const logeoContent = usuario.logeado ?
+        <div>
+            <button onClick={() =>{
+                setUsuario(logout())
+                navigate('/login')
+                }}>Logout</button>
+        </div>:
+        <div>
+            <a href="/login">Logearse</a>
+            <a href="/register">Registrarse</a>
+        </div>
+        setLogeo(logeoContent)
+        }, [usuario, navigate, location])
     return(
         <nav className="bg-white border-gray-200 dark:bg-gray-900">
             <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
@@ -29,6 +49,7 @@ function NavBar(){
                         </li>
                     </ul>
                 </div>
+                {logeo}                
             </div>
         </nav>
     )
