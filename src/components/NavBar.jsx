@@ -8,6 +8,7 @@ function NavBar(){
     const {usuario, setUsuario} = useContext(UserContext)
     const location = useLocation()
     const [logeo, setLogeo] = useState(<div></div>)
+
     useEffect(()=>{
         const logeoContent = usuario.logeado ?
         <div>
@@ -49,7 +50,8 @@ function NavBar(){
                         </li>
                     </ul>
                 </div>
-                {logeo}                
+                {logeo}
+                Hola {usuario.nombre}
             </div>
         </nav>
     )

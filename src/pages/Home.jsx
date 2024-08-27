@@ -16,12 +16,7 @@ function Home() {
   return (
     <div className='h-screen'>
       <NavBar/>
-      <ContextoRecetas.Provider value={valor}>
-        <div className="grid grid-cols-5">
-          <AgregarReceta />
-          <ListadoRecetas />
-        </div>
-      </ContextoRecetas.Provider>
+      <h1>Bienvenido al Recetario</h1>
     </div>
   )
 }
