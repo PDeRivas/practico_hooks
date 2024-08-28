@@ -7,6 +7,8 @@ import Agregar from './pages/Agregar'
 import Login from './pages/Login'
 import Registrar from './pages/Registrar'
 import { UserProvider } from './context/contextoUsuario'
+import RutaLogeado from './components/RutaLogeado'
+import RutaNoLogeado from './components/RutaNoLogeado'
 
 function App() {
   let [usuario, setUsuario] = useState()
@@ -18,10 +20,18 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route path='/' element={<Home/>}/>
-          <Route path='/list' element={<Listado/>}/>
-          <Route path='/add' element={<Agregar/>}/>
-          <Route path='/login' element={<Login/>}/>
-          <Route path='/register' element={<Registrar/>}/>
+
+          {/* Rutas solo accesibles para un usuario sin logear */}
+          <Route element={<RutaNoLogeado/>}>
+            <Route path='/login' element={<Login/>}/>
+            <Route path='/register' element={<Registrar/>}/>
+          </Route>
+
+          {/* Rutas solo accesibles para un usuario logeado */}
+          <Route element={<RutaLogeado/>}>
+            <Route path='/list' element={<Listado/>}/>
+            <Route path='/add' element={<Agregar/>}/>
+          </Route>
         </Routes>
       </BrowserRouter>
     </UserProvider>
