@@ -18,11 +18,12 @@ function NavBar(){
                 }}>Logout</button>
         </div>:
         <div>
-            <a href="/login">Logearse</a>
-            <a href="/register">Registrarse</a>
+            <button onClick={() => navigate('/login')} className="mr-5">Logearse</button>
+            <button onClick={() => navigate('/register')}>Registrarse</button>
         </div>
         setLogeo(logeoContent)
         }, [usuario, navigate, location])
+        
     return(
         <nav className="bg-white border-gray-200 dark:bg-gray-900">
             <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
@@ -39,19 +40,19 @@ function NavBar(){
                             </a>
                         </li>
                         <li>
-                            <a href="/add" className="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">
+                            <a href={usuario.logeado ? "/add":"/login"} className="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">
                                 Agregar Receta
                             </a>
                         </li>
                         <li>
-                            <a href="/list" className="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">
+                            <a href={usuario.logeado ? "/list":"/login"} className="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">
                                 Listado de Recetas
                             </a>
                         </li>
                     </ul>
                 </div>
                 {logeo}
-                Hola {usuario.nombre}
+                {usuario.logeado ? `Hola${usuario.nombre}`: ''}
             </div>
         </nav>
     )
