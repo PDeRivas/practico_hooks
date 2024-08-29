@@ -1,5 +1,9 @@
 # Tarea: Crear una Aplicación de Recetas de Cocina con React
 
+Alumno: de Rivas, Pablo
+
+Profesor: Invaldi, Agustín
+
 ## Objetivo
 
 Crear una aplicación en React que permita a los usuarios gestionar recetas de cocina. La aplicación debe utilizar los hooks `useState`, `useEffect`, y `useContext` para manejar el estado y efectos secundarios.
