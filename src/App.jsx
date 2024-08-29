@@ -9,6 +9,7 @@ import Registrar from './pages/Registrar'
 import { UserProvider } from './context/contextoUsuario'
 import RutaLogeado from './components/RutaLogeado'
 import RutaNoLogeado from './components/RutaNoLogeado'
+import Receta from './pages/Receta'
 
 function App() {
   let [usuario, setUsuario] = useState()
@@ -31,6 +32,7 @@ function App() {
           <Route element={<RutaLogeado/>}>
             <Route path='/list' element={<Listado/>}/>
             <Route path='/add' element={<Agregar/>}/>
+            <Route path='/receta/:recetaId' element={<Receta/>}/>
           </Route>
         </Routes>
       </BrowserRouter>

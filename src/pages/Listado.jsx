@@ -2,11 +2,7 @@ import React, { useState } from 'react'
 import ListadoRecetas from '../components/ListadoRecetas'
 import getRecetas from '../functions/getRecetas';
 import NavBar from '../components/NavBar';
-
-export const ContextoRecetas = React.createContext({
-  recetas: JSON.parse(localStorage.getItem('recetas')),
-  setRecetas: () => {}
-});
+import { ContextoRecetas } from './Home';
 
 function Listado() {
   let [recetas, setRecetas] = useState(getRecetas())
