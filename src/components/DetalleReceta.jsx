@@ -1,8 +1,5 @@
-import { useContext } from "react"
 import deleteReceta from "../functions/deleteReceta"
-import { ContextoRecetas } from "../pages/Home"
-import getRecetas from "../functions/getRecetas"
-import { useParams, useNavigate } from "react-router-dom"
+import { useNavigate } from "react-router-dom"
 
 export default function DetalleReceta(data){
     let receta = data.receta
@@ -10,12 +7,12 @@ export default function DetalleReceta(data){
     let nombre = receta.nombre
     let descripcion = receta.descripcion
     let id = receta.id
-    
+
     let navigate = useNavigate()
 
     let handleBorrar = () =>{
         deleteReceta(id)
-        navigate('/')
+        navigate('/list')
     }
 
     return(

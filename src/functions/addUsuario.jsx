@@ -1,11 +1,14 @@
-export default function addUsuario(nombre, contrasena){
-    let usuarioAgregado = false
+export default async function addUsuario(nombre, contrasena){
     let usuariosString = localStorage.getItem('usuarios')
+    let usuarioAgregado = false
+    
     let usuariosJson = []
     let lastId = 0
+
     if (!usuariosString || usuariosString == '[]'){
         lastId = 1
     }
+
     else{
         usuariosJson = JSON.parse(usuariosString)
         lastId = usuariosJson[usuariosJson.length-1].id + 1
@@ -19,13 +22,10 @@ export default function addUsuario(nombre, contrasena){
     })
 
     if (nombreDisponible){
-        usuariosJson.push({
-            id: lastId,
-            nombre: nombre,
-            contrasena: contrasena,
-        })
+        usuarioAgregado = {id:lastId, nombre: nombre, logeado:true}
+        usuariosJson.push(usuarioAgregado)
         localStorage.setItem('usuarios', JSON.stringify(usuariosJson))
-        usuarioAgregado = true
+        sessionStorage.setItem('usuario', JSON.stringify(usuarioAgregado))
     }
     return usuarioAgregado
 }

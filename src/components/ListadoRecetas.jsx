@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from 'react'
+import { useContext } from 'react'
 import { ContextoRecetas } from '../pages/Home'
 import TarjetaReceta from './TarjetaReceta'
 

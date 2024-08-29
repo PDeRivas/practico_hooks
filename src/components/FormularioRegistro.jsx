@@ -1,12 +1,14 @@
-import { useContext, useState } from 'react'
+import { useState, useContext } from 'react'
 import addUsuario from '../functions/addUsuario'
-import { redirect } from 'react-router-dom'
 import { useNavigate } from 'react-router-dom'
+import { UserContext } from '../context/contextoUsuario'
 
 export default function FormularioRegistro() {
     let [nombre, setNombre] = useState('')
     let [contrasena, setContrasena] = useState('')
     const navigate = useNavigate();
+    const {usuario, setUsuario} = useContext(UserContext)
+
 
     let handleNombre = (event)=>{
         let valor = event.target.value
@@ -18,12 +20,11 @@ export default function FormularioRegistro() {
         setContrasena(valor)
     }
 
-    let handleSubmit = (event) =>{
+    let handleSubmit = async (event) =>{
         event.preventDefault()
-        let agregado = addUsuario(nombre=nombre, contrasena=contrasena)
-        console.log(agregado)
+        let agregado = await addUsuario(nombre=nombre, contrasena=contrasena)
         if (agregado){
-            console.log('xdxdxd')
+            setUsuario(agregado)
             navigate('/')
         }
     }

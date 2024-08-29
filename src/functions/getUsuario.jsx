@@ -1,5 +1,4 @@
 export default function getUsuario(nombre){
-    //localStorage.clear()
     let usuarios = localStorage.getItem('usuarios')
     if (usuarios == null){
         return false

@@ -13,6 +13,5 @@ export default async function login(nombre, contrasena){
             }
         })
     }
-    console.log(logeado)
     return logeado
 }

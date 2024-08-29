@@ -2,6 +2,7 @@ import { useContext, useState } from 'react'
 import login from '../functions/login'
 import { useNavigate } from 'react-router-dom'
 import { UserContext } from '../context/contextoUsuario'
+
 export default function FormularioLogin() {
     let navigate = useNavigate()
     let [nombre, setNombre] = useState('')
@@ -24,9 +25,6 @@ export default function FormularioLogin() {
         if (logeado){
             setUsuario(logeado)
             navigate('/')
-        }
-        else{
-            console.log('No logeado')
         }
     }
 
