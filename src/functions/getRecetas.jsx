@@ -1,11 +1,5 @@
-export default function getRecetas(){
-    //localStorage.clear()
-    let recetas = localStorage.getItem('recetas')
-    if (recetas == null){
-        recetas = []
-    }
-    else{
-        recetas = JSON.parse(recetas)
-    }
-    return recetas
+export default async function getRecetas(){
+    const response = await fetch('http://localhost:3000/receta')
+    const data = await (response.json())
+    return data
 }

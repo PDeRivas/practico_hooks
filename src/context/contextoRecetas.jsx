@@ -1,4 +1,7 @@
+import React from "react";
+import getRecetas from "../functions/getRecetas";
+
 export const ContextoRecetas = React.createContext({
-    recetas: JSON.parse(localStorage.getItem('recetas')),
+    recetas: getRecetas(),
     setRecetas: () => {}
   });

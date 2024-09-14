@@ -3,11 +3,6 @@ import getRecetas from '../functions/getRecetas';
 import NavBar from '../components/NavBar';
 import AgregarReceta from '../components/AgregarReceta';
 
-export const ContextoRecetas = React.createContext({
-  recetas: JSON.parse(localStorage.getItem('recetas')),
-  setRecetas: () => {}
-});
-
 function Agregar() {
   let [recetas, setRecetas] = useState(getRecetas())
   

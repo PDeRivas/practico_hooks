@@ -14,7 +14,6 @@ import Receta from './pages/Receta'
 function App() {
   let [usuario, setUsuario] = useState()
   let [logeado, setLogeado] = useState(false)
-
   let UsuarioContexto = {usuario, logeado, setLogeado}
   return (
     <UserProvider>

@@ -1,6 +1,6 @@
 import { useContext } from "react"
 import deleteReceta from "../functions/deleteReceta"
-import { ContextoRecetas } from "../pages/Home"
+import { ContextoRecetas } from "../context/contextoRecetas"
 import getRecetas from "../functions/getRecetas"
 
 export default function TarjetaReceta(data){

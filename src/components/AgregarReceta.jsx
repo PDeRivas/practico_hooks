@@ -1,7 +1,7 @@
 import { useContext, useState } from 'react'
 import addReceta from '../functions/addReceta'
 import getRecetas from '../functions/getRecetas'
-import { ContextoRecetas } from '../pages/Home'
+import { ContextoRecetas } from '../context/contextoRecetas'
 
 export default function AgregarReceta() {
     let [nombre, setNombre] = useState('')

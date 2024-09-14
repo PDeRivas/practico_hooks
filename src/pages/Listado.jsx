@@ -1,11 +1,11 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import ListadoRecetas from '../components/ListadoRecetas'
 import getRecetas from '../functions/getRecetas';
 import NavBar from '../components/NavBar';
-import { ContextoRecetas } from './Home';
+import { ContextoRecetas } from '../context/contextoRecetas';
 
 function Listado() {
-  let [recetas, setRecetas] = useState(getRecetas())
+  let [recetas, setRecetas] = useState([])
   
   const valor = {recetas, setRecetas}
   return (
