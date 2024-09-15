@@ -6,12 +6,11 @@ import DetalleReceta from '../components/DetalleReceta';
 
 function Receta(){
   let { recetaId } = useParams()
-  let receta = getReceta(recetaId)
   return (
     <div className='h-screen'>
       <NavBar/>
       <div className='flex justify-center'>
-        <DetalleReceta receta={receta}/>
+        <DetalleReceta recetaId={recetaId}/>
       </div>
     </div>
   )

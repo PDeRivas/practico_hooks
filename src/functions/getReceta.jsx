@@ -1,18 +1,5 @@
-export default function getReceta(id){
-    let recetas = localStorage.getItem('recetas')
-    let recetaEncontrada = null
-
-    if (recetas == null){
-        recetas = []
-    }
-
-    else{ 
-        recetas = JSON.parse(recetas)
-        recetas.forEach((receta)=>{
-            if (receta.id == id){
-                recetaEncontrada = receta
-            }
-        })
-    }
-    return recetaEncontrada
+export default async function getReceta(id){
+    const response = await fetch(`http://localhost:3000/receta/${id}`)
+    const data = await (response.json())
+    return data[0]
 }

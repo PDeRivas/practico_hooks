@@ -1,15 +1,22 @@
+import { useEffect, useState } from "react"
 import deleteReceta from "../functions/deleteReceta"
 import { useNavigate } from "react-router-dom"
+import getReceta from "../functions/getReceta"
 
 export default function DetalleReceta(data){
-    let receta = data.receta
-
-    let nombre = receta.nombre
-    let descripcion = receta.descripcion
-    let id = receta.id
+    let recetaId = data.recetaId
+    let nombre = ''
+    let descripcion = ''
+    let [receta, setReceta] = useState([])
+    useEffect(() => {
+        const fetchReceta = async() =>{
+          setReceta(await getReceta(recetaId))
+        }
+        fetchReceta()
+    }, [])
 
     let navigate = useNavigate()
-
+    
     let handleBorrar = () =>{
         deleteReceta(id)
         navigate('/list')
@@ -22,9 +29,10 @@ export default function DetalleReceta(data){
             </div>
             <div className="p-5">
                 <div>
-                    <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">{nombre}</h5>
+                    <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">{receta.nombre}</h5>
                 </div>
-                <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">{descripcion}</p>
+                <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">{receta.ingredientes}</p>
+                <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">{receta.pasos}</p>
             </div>
             <button onClick={handleBorrar}>Borrar</button>
         </div>
