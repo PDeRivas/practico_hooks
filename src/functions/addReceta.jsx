@@ -1,21 +1,14 @@
-export default function addReceta(nombre, descripcion){
-    //localStorage.clear()
-    let recetasString = localStorage.getItem('recetas')
-    let lastId = 0
-    let recetasJson = []
-    if (!recetasString || recetasString == '[]'){
-        lastId = 1
-    }
-    else{
-        recetasJson = JSON.parse(recetasString)
-        lastId = recetasJson[recetasJson.length-1].id + 1
-    }
-    recetasJson.push({
-        id: lastId,
-        nombre: nombre,
-        descripcion: descripcion,
-    })
-    
-    localStorage.setItem('recetas', JSON.stringify(recetasJson))
-    
+export default async function addReceta(nombre, ingredientes, pasos){
+    const response = await fetch(`http://localhost:3000/receta/`, {
+        method: "POST",
+        body: JSON.stringify({
+          nombre: nombre,
+          ingredientes: ingredientes,
+          pasos: pasos
+        }),
+        headers: {
+            "Content-type": "application/json; charset=UTF-8"
+          }
+    });
+    return response
 }
