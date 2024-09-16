@@ -5,8 +5,6 @@ import getReceta from "../functions/getReceta"
 
 export default function DetalleReceta(data){
     let recetaId = data.recetaId
-    let nombre = ''
-    let descripcion = ''
     let [receta, setReceta] = useState([])
     useEffect(() => {
         const fetchReceta = async() =>{
@@ -17,9 +15,12 @@ export default function DetalleReceta(data){
 
     let navigate = useNavigate()
     
-    let handleBorrar = () =>{
-        deleteReceta(id)
-        navigate('/list')
+    let handleBorrar = async () =>{
+        const response = await deleteReceta(recetaId)
+        console.log(response)
+        if(response.ok){
+            navigate('/list')
+        }
     }
 
     return(

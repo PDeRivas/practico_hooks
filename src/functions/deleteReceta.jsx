@@ -1,16 +1,9 @@
-import getRecetas from "./getRecetas"
-
-export default function deleteReceta(id){
-    let recetas = getRecetas()
-    let recetaBorrar = null
-    recetas.forEach((receta) =>{
-        if(receta.id == id){
-            recetaBorrar = receta
-        }
-    })
-    let indexBorrar = recetas.indexOf(recetaBorrar)
-    recetas.splice(indexBorrar, 1)
-    
-    localStorage.setItem('recetas', JSON.stringify(recetas))
-    //localStorage.clear()
+export default async function deleteReceta(id){
+    const response = await fetch(`http://localhost:3000/receta/${id}`, {
+        method: "DELETE",
+        headers: {
+            "Content-type": "application/json; charset=UTF-8"
+          }
+    });
+    return response
 }

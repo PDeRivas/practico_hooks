@@ -12,7 +12,9 @@ function Login() {
         console.log(response)})
       .catch(error => console.error('Error fetching data:', error));
   }, []);
+
   const valor = {recetas, setRecetas}
+  
   return (
     <div className='h-screen'>
       <NavBar/>
